@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "https://noblenautica.com/products/categories",
         images: [
             {
-                url: "/productbg.svg",
+                url: "/productbg.webp",
                 width: 1200,
                 height: 630,
                 alt: "Pool & Spa Product Categories - Noble Nautica",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     twitter: {
         title: "Pool & Spa Product Categories | Premium Aquatic Equipment",
         description: "Explore Noble Nautica's comprehensive range of premium pool and spa equipment categories.",
-        images: ["/productbg.svg"],
+        images: ["/productbg.webp"],
     },
     alternates: {
         canonical: "https://noblenautica.com/products/categories",

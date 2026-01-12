@@ -323,8 +323,17 @@ export default function ProductDetailPage() {
     return (
       <main className="min-h-screen">
         <Navbar />
-        <div className="lg:h-80 h-64 flex items-end p-8 w-full bg-cover bg-center" style={{ backgroundImage: `url("/herobg.svg")` }}>
-          <Skeleton className="h-10 w-64 bg-white/20" />
+        <div
+          className="relative lg:h-80 h-64 w-full bg-cover bg-center"
+          style={{ backgroundImage: 'url("/productbg.webp")' }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+          {/* Centered content */}
+          <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
+            <Skeleton className="h-10 w-64 bg-white/20 mx-auto" />
+          </div>
         </div>
         <div className="pt-24 pb-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -427,10 +436,20 @@ export default function ProductDetailPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <div className="lg:h-80 h-64 flex items-end p-8 w-full bg-cover bg-center" style={{ backgroundImage: `url("/herobg.svg")` }}>
-        <h1 className="lg:text-4xl text-2xl italic text-[#FBF5E4]">
-          “Pure <span className="text-white not-italic font-bold">Waters</span>, Noble <span className="text-white not-italic font-bold">Solutions</span>”
-        </h1>
+      <div
+        className="relative lg:h-80 h-64 w-full bg-cover bg-center"
+        style={{ backgroundImage: 'url("/productbg.webp")' }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+        {/* Centered text */}
+        <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
+          <h1 className="lg:text-4xl text-2xl italic text-[#FBF5E4]">
+            “Pure <span className="text-white not-italic font-bold">Waters</span>, Noble{" "}
+            <span className="text-white not-italic font-bold">Solutions</span>”
+          </h1>
+        </div>
       </div>
       <div className="pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

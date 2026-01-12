@@ -13,7 +13,6 @@ import CTA from "@/sections/CTA"
 import { getCategoriesWithCounts, sortCategoriesCustomOrder } from "@/lib/products"
 import { Skeleton } from "@/components/ui/skeleton"
 
-// Memoized Category Card Component
 const CategoryCard = memo(({ category, onClick }: { category: CategoryWithCount; onClick: (slug: string) => void }) => {
     const handleClick = useCallback(() => {
         onClick(category.slug)
@@ -29,7 +28,8 @@ const CategoryCard = memo(({ category, onClick }: { category: CategoryWithCount;
                 <CardContent className="p-6 flex flex-col items-center justify-center text-center min-h-[340px] h-full">
                     <div className="mb-4 flex flex-col items-center w-full">
                         <div className="w-40 h-40 rounded-full overflow-hidden bg-white flex items-center justify-center border border-[#6384AA]/30 group-hover:scale-110 transition-transform duration-300">
-                            <Image unoptimized
+                            <Image
+                                unoptimized
                                 src={category.image || "/placeholder-product.svg"}
                                 alt={`${category.name} icon`}
                                 width={64}
@@ -47,7 +47,7 @@ const CategoryCard = memo(({ category, onClick }: { category: CategoryWithCount;
                     </h3>
 
                     <p className="text-sm text-slate-600 mb-4 w-full">
-                        {category.count} {category.count === 1 ? 'Product' : 'Products'}
+                        {category.count} {category.count === 1 ? "Product" : "Products"}
                     </p>
 
                     <div className="flex-grow" />
@@ -67,7 +67,7 @@ const CategoryCard = memo(({ category, onClick }: { category: CategoryWithCount;
         </div>
     )
 })
-CategoryCard.displayName = 'CategoryCard'
+CategoryCard.displayName = "CategoryCard"
 
 interface CategoryWithCount {
     id: number
@@ -84,7 +84,6 @@ export default function CategoriesPage() {
     const [searchTerm, setSearchTerm] = useState("")
     const [loading, setLoading] = useState(true)
 
-    // Load categories with product counts
     useEffect(() => {
         loadCategories()
     }, [])
@@ -94,7 +93,6 @@ export default function CategoriesPage() {
             setLoading(true)
             const categoriesWithCounts = await getCategoriesWithCounts()
 
-            // Map to the expected format
             const categoriesWithDetails = categoriesWithCounts.map((category) => ({
                 id: category.id,
                 name: category.name,
@@ -104,17 +102,15 @@ export default function CategoriesPage() {
                 slug: category.slug
             }))
 
-            // Enforce custom order in UI as well
             const sorted = sortCategoriesCustomOrder(categoriesWithDetails)
             setCategories(sorted)
         } catch (error) {
-            console.error('Failed to load categories:', error)
+            console.error("Failed to load categories:", error)
         } finally {
             setLoading(false)
         }
     }
 
-    // Filter categories based on search term
     const filteredCategories = useMemo(() => {
         if (!searchTerm.trim()) return categories
 
@@ -132,8 +128,12 @@ export default function CategoriesPage() {
         return (
             <main className="min-h-screen">
                 <Navbar />
-                <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                    <div className="flex items-end h-full p-8">
+                <div
+                    className="relative h-[50vh] w-full bg-cover bg-center"
+                    style={{ backgroundImage: `url("/productbg.webp")` }}
+                >
+                    <div className="absolute inset-0 bg-[#0b1c2d]/70" />
+                    <div className="relative flex items-end h-full p-8">
                         <div className="max-w-4xl">
                             <Skeleton className="h-12 w-96 mb-4 bg-white/20" />
                             <Skeleton className="h-6 w-80 bg-white/20" />
@@ -141,7 +141,6 @@ export default function CategoriesPage() {
                     </div>
                 </div>
 
-                {/* Search Section Skeleton */}
                 <section className="py-8 pt-16">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-md mx-auto">
@@ -150,7 +149,6 @@ export default function CategoriesPage() {
                     </div>
                 </section>
 
-                {/* Categories Grid Skeleton */}
                 <section className="py-12 pb-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -178,8 +176,15 @@ export default function CategoriesPage() {
     return (
         <main className="min-h-screen">
             <Navbar />
-            <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                <div className="flex items-end h-full p-8">
+            <div
+                className="relative h-[50vh] w-full bg-cover bg-center"
+                style={{ backgroundImage: `url("/productbg.webp")` }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#0b1c2d]/70" />
+
+                {/* Centered content */}
+                <div className="relative flex items-center justify-center h-full p-8 text-center">
                     <div className="max-w-4xl">
                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                             Our Product Categories
@@ -191,7 +196,6 @@ export default function CategoriesPage() {
                 </div>
             </div>
 
-            {/* Search Section */}
             <section className="py-8 pt-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-md mx-auto">
@@ -209,7 +213,6 @@ export default function CategoriesPage() {
                 </div>
             </section>
 
-            {/* Categories Grid */}
             <section className="py-12 pb-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {filteredCategories.length > 0 ? (

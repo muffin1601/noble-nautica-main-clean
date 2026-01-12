@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://noblenautica.com/contact",
         images: [
             {
-                url: "/contactbg.svg",
+                url: "/contactbg.webp",
                 width: 1200,
                 height: 630,
                 alt: "Contact Noble Nautica - Pool & Spa Solutions",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     twitter: {
         title: "Contact Noble Nautica | Get In Touch for Pool & Spa Solutions",
         description: "Contact Noble Nautica for premium pool and spa equipment solutions. Expert consultation for aquatic infrastructure projects.",
-        images: ["/contactbg.svg"],
+        images: ["/contactbg.webp"],
     },
     alternates: {
         canonical: "https://noblenautica.com/contact",

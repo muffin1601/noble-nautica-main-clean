@@ -32,7 +32,8 @@ const ProductCard = memo(({ product, categorySlug }: { product: Product; categor
             <Card className="flex p-0 gap-0 flex-col h-full hover:translate-y-[-6px] hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-[#6384AA] bg-gradient-to-br from-white to-slate-50">
                 <div className="aspect-square bg-white relative overflow-hidden flex items-center justify-center">
                     {imageSrc && imageSrc !== "/placeholder-product.svg" ? (
-                        <Image unoptimized
+                        <Image
+                            unoptimized
                             src={imageSrc}
                             alt={product.name}
                             fill
@@ -75,7 +76,7 @@ const ProductCard = memo(({ product, categorySlug }: { product: Product; categor
         </div>
     )
 })
-ProductCard.displayName = 'ProductCard'
+ProductCard.displayName = "ProductCard"
 
 export default function SubcategoryProductsPage() {
     const params = useParams()
@@ -90,7 +91,6 @@ export default function SubcategoryProductsPage() {
 
     const categorySlug = decodeURIComponent(params.slug as string)
     const subcategorySlug = decodeURIComponent(params.subslug as string)
-
 
     const loadData = useCallback(async () => {
         if (!categorySlug || !subcategorySlug) return
@@ -107,7 +107,6 @@ export default function SubcategoryProductsPage() {
                 setChildSubcategories(children)
 
                 if (children.length > 0) {
-                    // Default to first child
                     const defaultChildSlug = children[0].slug
                     setSelectedChildSlug(defaultChildSlug)
                     const productsData = await getProductsBySubcategory(defaultChildSlug)
@@ -117,12 +116,11 @@ export default function SubcategoryProductsPage() {
                 }
             }
 
-            // Fallback: no children, load products for the subcategory itself
             const productsData = await getProductsBySubcategory(subcategorySlug)
             setProducts(productsData)
             setFilteredProducts(productsData)
         } catch (err) {
-            console.error('Failed to load subcategory products:', err)
+            console.error("Failed to load subcategory products:", err)
             setProducts([])
             setFilteredProducts([])
         } finally {
@@ -138,13 +136,13 @@ export default function SubcategoryProductsPage() {
             if (searchTerm.trim()) {
                 const localResults = products.filter(p =>
                     p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    (p.description || '').toLowerCase().includes(searchTerm.toLowerCase())
+                    (p.description || "").toLowerCase().includes(searchTerm.toLowerCase())
                 )
                 setFilteredProducts(localResults)
             } else {
                 setFilteredProducts(products)
             }
-        }, 200) // Reduced debounce time
+        }, 200)
         return () => clearTimeout(timeout)
     }, [searchTerm, products])
 
@@ -154,18 +152,17 @@ export default function SubcategoryProductsPage() {
             setLoading(true)
             const productsData = await getProductsBySubcategory(childSlug)
             setProducts(productsData)
-            // Re-apply search filter if there is an active search term
             if (searchTerm.trim()) {
                 const localResults = productsData.filter(p =>
                     p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    (p.description || '').toLowerCase().includes(searchTerm.toLowerCase())
+                    (p.description || "").toLowerCase().includes(searchTerm.toLowerCase())
                 )
                 setFilteredProducts(localResults)
             } else {
                 setFilteredProducts(productsData)
             }
         } catch (err) {
-            console.error('Failed to load child subcategory products:', err)
+            console.error("Failed to load child subcategory products:", err)
             setProducts([])
             setFilteredProducts([])
         } finally {
@@ -173,16 +170,22 @@ export default function SubcategoryProductsPage() {
         }
     }, [searchTerm])
 
-
     if (loading) {
         return (
             <main className="min-h-screen">
                 <Navbar />
-                <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                    <div className="flex items-end h-full p-8">
+                <div
+                    className="relative h-[50vh] w-full bg-cover bg-center"
+                    style={{ backgroundImage: 'url("/productbg.webp")' }}
+                >
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+                    {/* Centered skeleton content */}
+                    <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
                         <div className="max-w-4xl">
-                            <Skeleton className="h-10 w-32 mb-4 bg-white/20" />
-                            <Skeleton className="h-12 w-64 bg-white/20" />
+                            <Skeleton className="h-10 w-40 mx-auto mb-4 bg-white/30" />
+                            <Skeleton className="h-12 w-72 mx-auto bg-white/30" />
                         </div>
                     </div>
                 </div>
@@ -225,38 +228,44 @@ export default function SubcategoryProductsPage() {
     return (
         <main className="min-h-screen">
             <Navbar />
-            <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                <div className="flex items-end h-full p-8">
+            <div
+                className="relative h-[50vh] w-full bg-cover bg-center"
+                style={{ backgroundImage: 'url("/productbg.webp")' }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+                {/* Centered content */}
+                <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
                     <div className="max-w-4xl">
-                        <div className="flex items-center mb-4">
+                        <div className="flex justify-center mb-6">
                             <Button
                                 variant="ghost"
-                                onClick={() => router.push(`/products/categories/${encodeURIComponent(categorySlug)}`)}
-                                className="text-white hover:text-[#FBF5E4] hover:bg-white/10 mr-4"
+                                onClick={() =>
+                                    router.push(`/products/categories/${encodeURIComponent(categorySlug)}`)
+                                }
+                                className="text-white hover:text-[#FBF5E4] hover:bg-white/10"
                             >
                                 <ArrowLeft className="h-4 w-4 mr-2" />
-                                Back to {category?.name || 'Category'}
+                                Back to {category?.name || "Category"}
                             </Button>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                            {category?.name || 'Category'}
+
+                        <h1 className="text-4xl md:text-6xl font-bold text-white">
+                            {category?.name || "Category"}
                         </h1>
-                        {/* <p className="text-xl text-[#FBF5E4] mb-8">
-                            {filteredProducts.length} {filteredProducts.length === 1 ? 'Product' : 'Products'} Available
-                        </p> */}
                     </div>
                 </div>
             </div>
 
             <section className="py-8 pt-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
                     <div className="max-w-md mx-auto">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                             <Input
                                 type="text"
-                                placeholder={`Search products...`}
+                                placeholder="Search products..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="pl-10 text-[#385785] bg-[#C7DAE7] h-12"
@@ -269,8 +278,8 @@ export default function SubcategoryProductsPage() {
                                 {childSubcategories.map((child) => (
                                     <Button
                                         key={child.id}
-                                        variant={selectedChildSlug === child.slug ? 'default' : 'outline'}
-                                        className={selectedChildSlug === child.slug ? 'bg-[#6384AA] hover:bg-[#6384AA]/90 text-white' : ''}
+                                        variant={selectedChildSlug === child.slug ? "default" : "outline"}
+                                        className={selectedChildSlug === child.slug ? "bg-[#6384AA] hover:bg-[#6384AA]/90 text-white" : ""}
                                         onClick={() => handleSelectChild(child.slug)}
                                     >
                                         {child.name}
@@ -295,8 +304,11 @@ export default function SubcategoryProductsPage() {
                             <Package className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
                             <p className="text-gray-600 mb-6">Try a different subcategory or go back.</p>
-                            <Button onClick={() => router.push(`/products/categories/${encodeURIComponent(categorySlug)}`)} className="bg-[#6384AA] hover:bg-[#6384AA]/90">
-                                Back to {category?.name || 'Category'}
+                            <Button
+                                onClick={() => router.push(`/products/categories/${encodeURIComponent(categorySlug)}`)}
+                                className="bg-[#6384AA] hover:bg-[#6384AA]/90"
+                            >
+                                Back to {category?.name || "Category"}
                             </Button>
                         </div>
                     )}
@@ -308,5 +320,3 @@ export default function SubcategoryProductsPage() {
         </main>
     )
 }
-
-

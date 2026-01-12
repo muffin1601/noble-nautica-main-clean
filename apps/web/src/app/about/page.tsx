@@ -73,7 +73,7 @@ export default function AboutPage() {
     <main className="min-h-screen">
       <Navbar />
 
-      <div className="h-[50vh] w-full flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url("/aboutbg.svg")` }}>
+      <div className="h-[50vh] w-full flex justify-center items-center bg-cover bg-center" style={{ backgroundImage: `url("/aboutbg.webp")` }}>
 
         <h1 className="text-4xl md:text-5xl font-semibold text-white text-center mb-12">About Us</h1>
 

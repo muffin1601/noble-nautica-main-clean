@@ -36,7 +36,8 @@ const ProductCard = memo(({ product, categorySlug }: { product: Product; categor
             <Card className="h-full py-0 hover:translate-y-[-10px] hover:shadow-xl transition-all gap-0 duration-300 overflow-hidden flex flex-col">
                 <div className="aspect-video bg-white relative overflow-hidden">
                     {imageSrc && imageSrc !== "/placeholder-product.svg" ? (
-                        <Image unoptimized
+                        <Image
+                            unoptimized
                             src={imageSrc}
                             alt={product.name}
                             fill
@@ -82,7 +83,7 @@ const ProductCard = memo(({ product, categorySlug }: { product: Product; categor
         </div>
     )
 })
-ProductCard.displayName = 'ProductCard'
+ProductCard.displayName = "ProductCard"
 
 //
 
@@ -95,7 +96,6 @@ export default function CategoryProductsPage() {
     const [loading, setLoading] = useState(true)
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
     const [category, setCategory] = useState<Category | null>(null)
-
 
     const categorySlug = decodeURIComponent(params.slug as string)
 
@@ -110,7 +110,7 @@ export default function CategoryProductsPage() {
             const foundCategory = categories.find(cat => cat.slug === categorySlug)
 
             if (!foundCategory) {
-                console.error('Category not found:', categorySlug)
+                console.error("Category not found:", categorySlug)
                 setProducts([])
                 setFilteredProducts([])
                 setCategory(null)
@@ -131,7 +131,7 @@ export default function CategoryProductsPage() {
                 setFilteredProducts([])
             }
         } catch (error) {
-            console.error('Failed to load category products:', error)
+            console.error("Failed to load category products:", error)
             setProducts([])
             setFilteredProducts([])
             setCategory(null)
@@ -168,7 +168,7 @@ export default function CategoryProductsPage() {
                             setFilteredProducts(categoryResults)
                         }
                     } catch (error) {
-                        console.error('Search failed:', error)
+                        console.error("Search failed:", error)
                     }
                 }
             } else {
@@ -176,27 +176,28 @@ export default function CategoryProductsPage() {
             }
         }
 
-        const timeoutId = setTimeout(performSearch, 200) // Reduced debounce time
+        const timeoutId = setTimeout(performSearch, 200)
         return () => clearTimeout(timeoutId)
     }, [searchTerm, products, category])
 
-
     // Image loading handlers
-
-
-
-
-
 
     if (loading) {
         return (
             <main className="min-h-screen">
                 <Navbar />
-                <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                    <div className="flex items-end h-full p-8">
-                        <div className="max-w-4xl">
-                            <Skeleton className="h-10 w-32 mb-4 bg-white/20" />
-                            <Skeleton className="h-12 w-64 bg-white/20" />
+                <div
+                    className="relative h-[50vh] w-full bg-cover bg-center"
+                    style={{ backgroundImage: 'url("/productbg.webp")' }}
+                >
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+                    {/* Centered content */}
+                    <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
+                        <div className="max-w-4xl w-full">
+                            <Skeleton className="h-10 w-48 mx-auto mb-4 bg-white/30" />
+                            <Skeleton className="h-12 w-72 mx-auto bg-white/30" />
                         </div>
                     </div>
                 </div>
@@ -239,25 +240,30 @@ export default function CategoryProductsPage() {
     return (
         <main className="min-h-screen">
             <Navbar />
-            <div className="h-[50vh] w-full bg-cover bg-center" style={{ backgroundImage: `url("/productbg.svg")` }}>
-                <div className="flex items-end h-full p-8">
+            <div
+                className="relative h-[50vh] w-full bg-cover bg-center"
+                style={{ backgroundImage: `url("/productbg.webp")` }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#0b1c2d]/70 z-10" />
+
+                {/* Centered content */}
+                <div className="relative z-20 flex items-center justify-center h-full px-6 text-center">
                     <div className="max-w-4xl">
-                        <div className="flex items-center mb-4">
+                        <div className="flex justify-center mb-6">
                             <Button
                                 variant="ghost"
-                                onClick={() => router.push('/products/categories')}
-                                className="text-white hover:text-[#FBF5E4] hover:bg-white/10 mr-4"
+                                onClick={() => router.push("/products/categories")}
+                                className="text-white hover:text-[#FBF5E4] hover:bg-white/10"
                             >
                                 <ArrowLeft className="h-4 w-4 mr-2" />
                                 Back to Categories
                             </Button>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                            {category?.name || 'Category'}
+
+                        <h1 className="text-4xl md:text-6xl font-bold text-white">
+                            {category?.name || "Category"}
                         </h1>
-                        {/* <p className="text-xl text-[#FBF5E4] mb-8">
-                            {filteredProducts.length} {filteredProducts.length === 1 ? 'Product' : 'Products'} Available
-                        </p> */}
                     </div>
                 </div>
             </div>
@@ -270,7 +276,7 @@ export default function CategoryProductsPage() {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                             <Input
                                 type="text"
-                                placeholder={`Search ${category?.name || 'category'} products...`}
+                                placeholder={`Search ${category?.name || "category"} products...`}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="pl-10 text-[#385785] bg-[#C7DAE7] h-12"
@@ -304,14 +310,19 @@ export default function CategoryProductsPage() {
                                         <CardContent className="p-6 flex flex-col items-center justify-center text-center min-h-[200px] h-full">
                                             <div className="mb-4 flex flex-col items-center w-full">
                                                 <div className="w-24 h-24 rounded-full overflow-hidden bg-white flex items-center justify-center border border-[#6384AA]/30 group-hover:scale-110 transition-transform duration-300">
-                                                    <span className="text-[#6384AA] font-bold text-3xl">{sub.name.charAt(0).toUpperCase()}</span>
+                                                    <span className="text-[#6384AA] font-bold text-3xl">
+                                                        {sub.name.charAt(0).toUpperCase()}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <h3 className="font-bold text-xl text-slate-900 group-hover:text-[#6384AA] transition-colors duration-300 mb-2 line-clamp-2 w-full">
                                                 {sub.name}
                                             </h3>
                                             <div className="flex-grow" />
-                                            <Link href={`/products/categories/${categorySlug}/subcategories/${encodeURIComponent(sub.slug)}`} className="block mt-4 w-full">
+                                            <Link
+                                                href={`/products/categories/${categorySlug}/subcategories/${encodeURIComponent(sub.slug)}`}
+                                                className="block mt-4 w-full"
+                                            >
                                                 <Button className="w-full mt-auto bg-[#6384AA] hover:bg-[#6384AA]/90 text-white group-hover:bg-[#385785] transition-colors duration-300">
                                                     View Products
                                                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -325,7 +336,11 @@ export default function CategoryProductsPage() {
                     ) : filteredProducts.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                             {filteredProducts.map((product) => (
-                                <ProductCard key={product.id} product={product} categorySlug={categorySlug} />
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    categorySlug={categorySlug}
+                                />
                             ))}
                         </div>
                     ) : (
@@ -333,10 +348,12 @@ export default function CategoryProductsPage() {
                             <Package className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
                             <p className="text-gray-600 mb-6">
-                                {searchTerm ? `No products in ${category?.name || 'this category'} match your search criteria.` : `No products available in ${category?.name || 'this category'}.`}
+                                {searchTerm
+                                    ? `No products in ${category?.name || "this category"} match your search criteria.`
+                                    : `No products available in ${category?.name || "this category"}.`}
                             </p>
                             <Button
-                                onClick={() => router.push('/products')}
+                                onClick={() => router.push("/products")}
                                 className="bg-[#6384AA] hover:bg-[#6384AA]/90"
                             >
                                 Browse All Categories
@@ -350,4 +367,4 @@ export default function CategoryProductsPage() {
             <Footer />
         </main>
     )
-} 
+}

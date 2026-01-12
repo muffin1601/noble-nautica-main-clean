@@ -123,7 +123,7 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <section className="relative h-[50vh] w-full bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url("/contactbg.svg")` }}>
+        style={{ backgroundImage: `url("/contactbg.webp")` }}>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">

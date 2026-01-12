@@ -132,7 +132,7 @@ export default function ProductCategories() {
 
   return (
     <section className="">
-      <div className="max-w-7xl -translate-y-1/3 bg-[#385785] rounded-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl -translate-y-1/3 bg-[#385785] rounded-2xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
         <div className="py-8">
           <Carousel
             setApi={setApi}
