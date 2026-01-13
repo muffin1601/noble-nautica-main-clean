@@ -1,5 +1,0 @@
-[build]
-command = "npx turbo run build --filter=web"
-
-[[plugins]]
-package = "@netlify/plugin-nextjs"
