@@ -209,7 +209,7 @@ const Catelog = () => {
         </div>
         <div className="w-full lg:w-1/2 p-2 md:p-4 flex justify-center">
           <Image unoptimized
-            src="/Catalogue.png"
+            src="/catalogue.jpg"
             width={500}
             height={400}
             alt="Catalogue Preview"
