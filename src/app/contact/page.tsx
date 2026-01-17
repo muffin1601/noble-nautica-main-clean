@@ -207,7 +207,7 @@ export default function ContactPage() {
 
 
       {/* Catalogue Section */}
-      <section className="py-6 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 ">
+      {/* <section className="py-6 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#385785] mb-4 sm:mb-6">
@@ -300,7 +300,7 @@ export default function ContactPage() {
 
 
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

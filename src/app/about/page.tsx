@@ -109,13 +109,18 @@ export default function AboutPage() {
 
           </div>
           <div className="w-full lg:w-1/2 p-2 md:p-4  rounded-xl flex justify-center">
-            <Image unoptimized
-              src="/Catalogue.png"
+            <video
+              src="/catalogue.mp4"
               width={500}
               height={400}
-              alt="Catalogue Preview"
               className="object-contain w-full h-auto max-w-sm md:max-w-md lg:max-w-lg"
-            />
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
