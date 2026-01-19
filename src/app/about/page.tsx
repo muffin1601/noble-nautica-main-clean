@@ -42,7 +42,7 @@ import Footer from "@/sections/footer"
 import { Award, Globe, Target, Heart } from "lucide-react"
 import Image from "next/image"
 import CTA from "@/sections/CTA"
-import ContactForm from "@/components/ContactCTA"
+import ContactForm from "@/components/ContactForm"
 
 
 const values = [
