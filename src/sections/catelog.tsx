@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 const CATALOGUE_DOWNLOAD_URL =
-  "https://drive.google.com/uc?export=download&id=13LQcai_vrwLP3Sl9wr492bdqNxxX35iW"
+  "https://github.com/muffin1601/noble-nautica-main-clean/releases/download/catalogue-v1/Noble.Nautica.Catlog.1.pdf"
 
 const Catelog = () => {
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -58,18 +58,23 @@ const Catelog = () => {
 
       if (!response.ok) throw new Error("Submission failed")
 
-      window.open(CATALOGUE_DOWNLOAD_URL, "_blank")
+
+      const link = document.createElement("a")
+      link.href = CATALOGUE_DOWNLOAD_URL
+      link.download = "Noble-Nautica-Catalogue.pdf"
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
 
       setDialogOpen(false)
       setFormData({ name: "", number: "", email: "", location: "" })
-
-      alert("Thank you! Your catalogue download has started.")
     } catch (error) {
       alert("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
   }
+
 
   return (
     <div className="flex px-4 sm:px-6 lg:px-0 items-center justify-center py-12">
