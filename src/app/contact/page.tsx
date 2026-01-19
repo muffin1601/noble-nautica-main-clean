@@ -11,23 +11,45 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <section
-        className="relative h-[50vh] w-full bg-cover bg-center flex items-center justify-center"
+        className="relative h-[70vh] w-full bg-cover bg-center flex flex-col items-center justify-center text-center"
         style={{ backgroundImage: `url("/contactbg.webp")` }}
       >
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+       
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6 max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Get In Touch
           </h1>
-          <p className="text-white text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-            Ready to transform your aquatic space? Let&apos;s discuss your project
-            and find the perfect solutions.
+
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg">
+            Ready to transform your aquatic space? Let’s discuss your project and find
+            the perfect solutions.
           </p>
+
+          {/* Contact Card */}
+          <a
+            href="mailto:noblenautica13@gmail.com"
+            className="mt-6 flex flex-col items-center text-center px-8 py-6 rounded-xl border border-[#385785]/40 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300"
+          >
+            <h3 className="text-[#6fa3ff] text-lg sm:text-xl font-semibold">
+              Send a Mail
+            </h3>
+
+            <p className="text-gray-400 text-xs sm:text-sm mt-1">
+              General enquiries
+            </p>
+
+            <p className="text-white text-base sm:text-lg font-medium mt-2">
+              noblenautica13@gmail.com
+            </p>
+          </a>
         </div>
       </section>
 
       {/* Location Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#385785] mb-4 sm:mb-6">
@@ -56,10 +78,10 @@ export default function ContactPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Form Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+      <section className="py-12 sm:py-16 md:py-10 lg:py-0">
         <ContactForm />
       </section>
 

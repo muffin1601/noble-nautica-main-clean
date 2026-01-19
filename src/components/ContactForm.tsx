@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from "react"
@@ -66,15 +67,17 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="h-fit lg:min-h-screen flex items-center justify-center p-4 py-6">
+    <div className=" h-fit lg:min-h-screen flex items-center justify-center p-4 py-6">
       <div className="w-full max-w-7xl">
+        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-[#385785] mb-2">
             Get in Touch
           </h1>
         </div>
 
-        <div className="bg-[#C7DAE7] rounded-2xl p-8 md:p-12 shadow-lg">
+        {/* Form Container */}
+        <div className="bg-[#C7DAE7] backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg">
           <div className="mb-6">
             <p className="text-slate-600 text-lg italic mb-2">Partnership</p>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-700">
@@ -82,76 +85,113 @@ export default function ContactForm() {
             </h2>
           </div>
 
-          {submitStatus === "success" && (
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
             <div className="mb-6 p-4 bg-green-100 border border-green-300 rounded-lg flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-600" />
-              <span className="text-green-800">
-                Message sent successfully! We&apos;ll get back to you soon.
-              </span>
+              <span className="text-green-800">Message sent successfully! We&apos;ll get back to you soon.</span>
             </div>
           )}
 
-          {submitStatus === "error" && (
+          {submitStatus === 'error' && (
             <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg flex items-center space-x-2">
               <XCircle className="h-5 w-5 text-red-600" />
-              <span className="text-red-800">
-                Failed to send message. Please try again.
-              </span>
+              <span className="text-red-800">Failed to send message. Please try again or contact us directly.</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* First Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
+              <div className="relative">
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full h-12 bg-white border-0 rounded-lg px-4 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-600 focus:ring-offset-0 text-slate-700"
+                  required
+                />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-slate-600 rounded-full"></div>
+                </div>
+              </div>
+              <div className="relative">
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full h-12 bg-white border-0 rounded-lg px-4 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-600 focus:ring-offset-0 text-slate-700"
+                  required
+                />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-slate-600 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Second Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="relative">
+                <Input
+                  type="tel"
+                  name="mobile"
+                  placeholder="Mobile Number"
+                  value={formData.mobile}
+                  onChange={handleInputChange}
+                  className="w-full h-12 bg-white border-0 rounded-lg px-4 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-600 focus:ring-offset-0 text-slate-700"
+                  required
+                />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-slate-600 rounded-full"></div>
+                </div>
+              </div>
+              <div className="relative">
+                <Input
+                  type="text"
+                  name="enquiry"
+                  placeholder="Type of Enquiry"
+                  value={formData.enquiry}
+                  onChange={handleInputChange}
+                  className="w-full h-12 bg-white border-0 rounded-lg px-4 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-600 focus:ring-offset-0 text-slate-700"
+                  required
+                />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <div className="w-3 h-3 bg-slate-600 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Message Field */}
+            <div>
+              <Textarea
+                name="message"
+                placeholder="Message"
+                value={formData.message}
                 onChange={handleInputChange}
-                required
-              />
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleInputChange}
+                rows={6}
+                className="w-full h-44 bg-white border-0 rounded-lg px-4 py-3 placeholder:text-slate-400 focus:ring-2 focus:ring-slate-600 focus:ring-offset-0 text-slate-700 resize-none"
                 required
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input
-                name="mobile"
-                placeholder="Mobile Number"
-                value={formData.mobile}
-                onChange={handleInputChange}
-              />
-              <Input
-                name="enquiry"
-                placeholder="Type of Enquiry"
-                value={formData.enquiry}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <Textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleInputChange}
-              rows={6}
-              required
-            />
-
+            {/* Submit Button */}
             <div className="flex justify-center pt-4">
-              <Button type="submit" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-[#385785] hover:bg-[#385785] text-white px-12 py-6 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin mr-2" />
                     Sending...
                   </>
                 ) : (
-                  "Send Message"
+                  'Send Message'
                 )}
               </Button>
             </div>
@@ -159,5 +199,5 @@ export default function ContactForm() {
         </div>
       </div>
     </div>
-  )
+  );
 }
