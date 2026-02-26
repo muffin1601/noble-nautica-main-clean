@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://noblenautica.com'),
+  metadataBase: new URL('https://noblenautica.co.uk'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://noblenautica.com',
+    url: 'https://noblenautica.co.uk',
     siteName: 'Noble Nautica',
     title: 'Noble Nautica | Premium Pool & Spa Equipment | Aquatic Infrastructure Solutions',
     description: 'Noble Nautica delivers premium aquatic and wellness infrastructure for the world\'s most ambitious projects. From Olympic-sized pools to wellness retreats, we provide precision-engineered systems and exclusive products trusted by professionals across Europe, USA, and growing markets.',
