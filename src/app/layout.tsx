@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     apple: '/icon.svg',
   },
   verification: {
-    google: 'your-google-verification-code', // Replace with actual verification code
+    google: 'your-google-verification-code', 
   },
 };
 

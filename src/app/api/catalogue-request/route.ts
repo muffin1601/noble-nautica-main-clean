@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
     const adminEmailResponse = await resend.emails.send({
       from: 'Noble Nautica <no-reply@noblenautica.co.uk>',
       to: ADMIN_EMAIL,
-      subject: ' New Catalogue Request Received',
+      subject: 'New Catalogue Request Received - Noble Nautica 🛥️',
       html: `
         <h2>New Catalogue Request</h2>
 
