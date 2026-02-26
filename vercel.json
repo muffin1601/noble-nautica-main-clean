@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "noblenautica.com"
+        }
+      ],
+      "destination": "https://noblenautica.co.uk/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "noblenautica.uk.co"
+        }
+      ],
+      "destination": "https://noblenautica.co.uk/$1",
+      "permanent": true
+    }
+  ]
+}
