@@ -1,100 +1,47 @@
 import { MetadataRoute } from 'next'
+import { getCategories, getProducts } from '@/lib/products'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://noblenautica.co.uk'
-    // const baseUrl = 'http://localhost:3001/'
+    
+    // Core pages
+    const routes = [
+        '',
+        '/about',
+        '/contact',
+        '/products/categories',
+        '/faq',
+        '/privacy',
+        '/terms',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: (route === '' || route === '/products/categories' ? 'weekly' : 'monthly') as any,
+        priority: route === '' ? 1 : 0.8,
+    }))
 
-    return [
-        {
-            url: baseUrl,
+    try {
+        // Fetch all categories
+        const categories = await getCategories()
+        const categoryRoutes = categories.map((category) => ({
+            url: `${baseUrl}/products/categories/${category.slug}`,
             lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/about`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/contact`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/products/categories`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        // Add dynamic product category pages
-        {
-            url: `${baseUrl}/products/categories/pools`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/spas`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/filtration`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/lighting`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/water-treatment`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/automation`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/products/categories/accessories`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
+            changeFrequency: 'weekly' as any,
             priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/faq`,
+        }))
+
+        // Fetch all products
+        const products = await getProducts()
+        const productRoutes = products.map((product) => ({
+            url: `${baseUrl}/products/categories/${product.category}/${product.id}`,
             lastModified: new Date(),
-            changeFrequency: 'monthly',
+            changeFrequency: 'monthly' as any,
             priority: 0.6,
-        },
-        {
-            url: `${baseUrl}/privacy`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
-        },
-        {
-            url: `${baseUrl}/terms`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
-        },
-    ]
+        }))
+
+        return [...routes, ...categoryRoutes, ...productRoutes]
+    } catch (error) {
+        console.error('Sitemap generation error:', error)
+        return routes // Fallback to core routes if DB fetch fails
+    }
 }

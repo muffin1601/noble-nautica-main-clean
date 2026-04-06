@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Noble Nautica | Premium Aquatic Infrastructure Company",
     description: "Learn about Noble Nautica's commitment to delivering premium aquatic and wellness infrastructure. With over 5,600 solutions from AI-enabled systems to seamless glass-edge pools, we empower contractors, architects and developers worldwide.",
-    url: "https://noblenautica.com/about",
+    url: "https://noblenautica.co.uk/about",
     images: [
       {
         url: "/aboutbg.svg",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     images: ["/aboutbg.svg"],
   },
   alternates: {
-    canonical: "https://noblenautica.com/about",
+    canonical: "https://noblenautica.co.uk/about",
   },
 }
 import Footer from "@/sections/footer"
@@ -153,3 +153,4 @@ export default function AboutPage() {
     </main>
   )
 }
+

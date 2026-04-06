@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Pool & Spa Product Categories | Premium Aquatic Equipment",
         description: "Explore Noble Nautica's comprehensive range of premium pool and spa equipment categories. From filtration systems to lighting, automation, and accessories.",
-        url: "https://noblenautica.com/products/categories",
+        url: "https://noblenautica.co.uk/products/categories",
         images: [
             {
                 url: "/productbg.webp",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         images: ["/productbg.webp"],
     },
     alternates: {
-        canonical: "https://noblenautica.com/products/categories",
+        canonical: "https://noblenautica.co.uk/products/categories",
     },
 }
 
@@ -47,3 +47,4 @@ export default function CategoriesLayout({
 }) {
     return children
 }
+

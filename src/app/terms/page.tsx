@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         follow: true,
     },
     alternates: {
-        canonical: "https://noblenautica.com/terms",
+        canonical: "https://noblenautica.co.uk/terms",
     },
 }
 
@@ -87,3 +87,4 @@ export default function TermsPage() {
         </main>
     )
 }
+

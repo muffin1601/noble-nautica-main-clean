@@ -29,7 +29,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
         tags = []
     } = config
 
-    const baseUrl = 'https://noblenautica.com'
+    const baseUrl = 'https://noblenautica.co.uk'
     const fullUrl = url ? `${baseUrl}${url}` : baseUrl
     const fullImageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`
 
@@ -115,7 +115,7 @@ export function generateBreadcrumbData(items: Array<{ name: string; url: string 
             "@type": "ListItem",
             "position": index + 1,
             "name": item.name,
-            "item": `https://noblenautica.com${item.url}`
+            "item": `https://noblenautica.co.uk${item.url}`
         }))
     }
 }
@@ -173,7 +173,7 @@ export function generateLocalBusinessData() {
         "@type": "LocalBusiness",
         "name": "Noble Nautica",
         "description": "Premium aquatic and wellness infrastructure solutions",
-        "url": "https://noblenautica.com",
+        "url": "https://noblenautica.co.uk",
         "telephone": "+44-20-0000-0000",
         "email": "noblenautica13@gmail.com",
         "address": {

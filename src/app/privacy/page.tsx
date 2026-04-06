@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         follow: true,
     },
     alternates: {
-        canonical: "https://noblenautica.com/privacy",
+        canonical: "https://noblenautica.co.uk/privacy",
     },
 }
 
@@ -81,3 +81,4 @@ export default function PrivacyPage() {
         </main>
     )
 }
+

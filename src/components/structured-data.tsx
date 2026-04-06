@@ -14,9 +14,9 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
                     "@type": "Organization",
                     "name": "Noble Nautica",
                     "description": "Premium aquatic and wellness infrastructure solutions for ambitious projects worldwide",
-                    "url": "https://noblenautica.com",
-                    "logo": "https://noblenautica.com/logo.svg",
-                    "image": "https://noblenautica.com/logo.svg",
+                    "url": "https://noblenautica.co.uk",
+                    "logo": "https://noblenautica.co.uk/logo.svg",
+                    "image": "https://noblenautica.co.uk/logo.svg",
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": "9 Hill Lane",
@@ -53,10 +53,10 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
                     "@type": "WebSite",
                     "name": "Noble Nautica",
                     "description": "Premium pool and spa equipment solutions",
-                    "url": "https://noblenautica.com",
+                    "url": "https://noblenautica.co.uk",
                     "potentialAction": {
                         "@type": "SearchAction",
-                        "target": "https://noblenautica.com/products/categories?search={search_term_string}",
+                        "target": "https://noblenautica.co.uk/products/categories?search={search_term_string}",
                         "query-input": "required name=search_term_string"
                     },
                     "publisher": {
@@ -64,7 +64,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
                         "name": "Noble Nautica",
                         "logo": {
                             "@type": "ImageObject",
-                            "url": "https://noblenautica.com/logo.svg"
+                            "url": "https://noblenautica.co.uk/logo.svg"
                         }
                     }
                 }
@@ -124,7 +124,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
                     "@type": "ContactPage",
                     "name": "Contact Noble Nautica",
                     "description": "Get in touch with Noble Nautica for premium pool and spa equipment solutions",
-                    "url": "https://noblenautica.com/contact",
+                    "url": "https://noblenautica.co.uk/contact",
                     "mainEntity": {
                         "@type": "Organization",
                         "name": "Noble Nautica",
@@ -159,3 +159,4 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         />
     )
 }
+

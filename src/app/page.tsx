@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Premium Pool & Spa Equipment | Aquatic Infrastructure Solutions",
     description:
       "Noble Nautica delivers premium aquatic and wellness infrastructure for the world's most ambitious projects.",
-    url: "https://noblenautica.com",
+    url: "https://noblenautica.co.uk",
     images: [
       {
         url: "/herobg.svg",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     images: ["/herobg.svg"],
   },
   alternates: {
-    canonical: "https://noblenautica.com",
+    canonical: "https://noblenautica.co.uk",
   },
 }
 
@@ -71,3 +71,4 @@ export default function HomePage() {
     </main>
   )
 }
+

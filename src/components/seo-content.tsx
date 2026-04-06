@@ -41,7 +41,7 @@ export default function SEOContent({
                                 "@type": "ListItem",
                                 "position": index + 1,
                                 "name": item.name,
-                                "item": `https://noblenautica.com${item.url}`
+                                "item": `https://noblenautica.co.uk${item.url}`
                             }))
                         })
                     }}
@@ -138,3 +138,4 @@ export function ProductStructuredData({ product }: ProductStructuredDataProps) {
         />
     )
 }
+

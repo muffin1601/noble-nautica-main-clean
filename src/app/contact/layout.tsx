@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Contact Noble Nautica | Get In Touch for Pool & Spa Solutions",
         description: "Contact Noble Nautica for premium pool and spa equipment solutions. Located in Ruislip, UK, we provide expert consultation for aquatic infrastructure projects.",
-        url: "https://noblenautica.com/contact",
+        url: "https://noblenautica.co.uk/contact",
         images: [
             {
                 url: "/contactbg.webp",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         images: ["/contactbg.webp"],
     },
     alternates: {
-        canonical: "https://noblenautica.com/contact",
+        canonical: "https://noblenautica.co.uk/contact",
     },
 }
 
@@ -45,3 +45,4 @@ export default function ContactLayout({
 }) {
     return children
 }
+

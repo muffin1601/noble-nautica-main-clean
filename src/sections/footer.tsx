@@ -118,7 +118,7 @@ const Footer = () => {
               {/* Social Media Icons */}
               {/* <div className='flex items-center justify-center lg:justify-end gap-3 mt-4'>
                 <a
-                  href="mailto:info@noblenautica.com"
+                  href="mailto:info@noblenautica.co.uk"
                   className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
                   aria-label="Email us"
                 >

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Frequently Asked Questions | Noble Nautica Pool & Spa Equipment",
         description: "Find answers to common questions about Noble Nautica's premium pool and spa equipment, installation, maintenance, and support.",
-        url: "https://noblenautica.com/faq",
+        url: "https://noblenautica.co.uk/faq",
         images: [
             {
                 url: "/logo.svg",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         images: ["/logo.svg"],
     },
     alternates: {
-        canonical: "https://noblenautica.com/faq",
+        canonical: "https://noblenautica.co.uk/faq",
     },
 }
 
@@ -148,3 +148,4 @@ export default function FAQPage() {
         </main>
     )
 }
+

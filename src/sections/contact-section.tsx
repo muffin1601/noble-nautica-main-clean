@@ -54,7 +54,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-slate-300">info@noblenautica.com</p>
+                  <p className="text-slate-300">info@noblenautica.co.uk</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -116,3 +116,4 @@ export default function ContactSection() {
     </section>
   )
 }
+
